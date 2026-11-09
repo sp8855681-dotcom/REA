@@ -1,0 +1,19 @@
+{
+  "id": "./",
+  "name": "REA — your day, in good flow",
+  "short_name": "REA",
+  "description": "A thoughtful companion for a more focused workday.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#090e18",
+  "theme_color": "#090e18",
+  "icons": [
+    {
+      "src": "rea-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#090e18">
+    <meta name="description" content="Meet REA, your thoughtful AI companion for a more focused workday.">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="REA">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" href="rea-icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="rea-icon.svg">
+    <title>REA — your day, in good flow</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <main id="app">
+      <section class="auth-screen" id="auth-screen" aria-labelledby="auth-title" hidden>
+        <div class="auth-art">
+          <a class="wordmark" href="#" aria-label="REA home">
+            <span class="mini-mark" aria-hidden="true"><i></i></span>
+            <span>REA</span>
+          </a>
+          <div class="art-copy">
+            <p class="eyebrow"><span class="status-dot"></span> A calmer kind of assistant</p>
+            <h1>Your Voice,<br>in <span>good flow.</span></h1>
+            <p class="art-description">A thoughtful companion for your laptop. Make room for the work that matters.</p>
+          </div>
+          <div class="orbit-art" aria-hidden="true">
+            <div class="orbit orbit-one"></div>
+            <div class="orbit orbit-two"></div>
+            <div class="orbit orbit-three"></div>
+            <div class="orbit-core"><span class="core-glow"></span></div>
+            <span class="orbit-label label-focus">FOCUS <b>25 min</b></span>
+            <span class="orbit-label label-breathe">BREATHE <b>02 min</b></span>
+            <span class="orbit-label label-flow">YOUR FLOW <b>is yours</b></span>
+          </div>
+          <div class="art-footer"><span>MADE FOR YOUR MOMENT</span><span>01 — 03</span></div>
+        </div>
+
+        <div class="auth-panel">
+          <div class="auth-topline">
+            <a class="wordmark mobile-wordmark" href="#" aria-label="REA"><span class="mini-mark" aria-hidden="true"><i></i></span><span>REA</span></a>
+            <span class="secure-note"><span class="lock-icon" aria-hidden="true">⌑</span> Your space, your rules</span>
+            <span class="top-help">Already have an account? <button class="text-button" id="auth-switch" type="button">Sign in</button></span>
+          </div>
+          <div class="auth-form-wrap">
+            <p class="eyebrow auth-eyebrow">A LITTLE MORE ROOM TO THINK</p>
+            <h2 id="auth-title">Make space for<br>your best work.</h2>
+            <p class="auth-subtitle">Create your REA space, just a better place to begin and have conversations.</p>
+
+            <form id="auth-form">
+              <label class="field-label" for="name-field" id="name-label">Your name</label>
+              <div class="input-wrap" id="name-wrap">
+                <span class="field-icon" aria-hidden="true">✳</span>
+                <input id="name-field" name="name" type="text" autocomplete="name" placeholder="How should REA greet you?" required>
+              </div>
+              <label class="field-label" for="email-field">Email address</label>
+              <div class="input-wrap">
+                <span class="field-icon" aria-hidden="true">✉</span>
+                <input id="email-field" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+              </div>
+              <div class="password-label">
+                <label class="field-label" for="password-field">Password</label>
+                <span class="password-hint">At least 8 characters</span>
+              </div>
+              <div class="input-wrap">
+                <span class="field-icon" aria-hidden="true">⌑</span>
+                <input id="password-field" name="password" type="password" autocomplete="new-password" placeholder="Create a password" minlength="8" required>
+                <button class="show-password" id="show-password" type="button" aria-label="Show password">Show</button>
+              </div>
+              <p class="form-error" id="form-error" role="alert"></p>
+              <button class="primary-button auth-submit" type="submit"><span id="submit-label">Create my space</span><span aria-hidden="true">↗</span></button>
+            </form>
+
+            <p class="terms-note">By continuing, you agree to REA's <a href="#privacy">Terms</a> and <a href="#privacy">Privacy Policy</a>.</p>
+          </div>
+          <div class="auth-bottom"><span>© 2026 REA STUDIO</span><a href="#privacy">Privacy first, always <span aria-hidden="true">↗</span></a></div>
+        </div>
+      </section>
+
+      <section class="loading-screen" id="loading-screen" aria-live="polite" aria-label="REA is getting ready">
+        <div class="loading-content">
+          <div class="loading-mark" aria-hidden="true"><span class="loading-ring"></span><span class="loading-orb"></span><span class="loading-spark"></span></div>
+          <p class="loading-kicker">A MOMENT TO FIND YOUR FLOW</p>
+          <h1 class="typing-name" id="typing-name"></h1>
+          <p class="loading-caption" id="loading-caption">Getting your sign-in ready<span class="loading-dots">...</span></p>
+          <div class="loading-progress"><span></span></div>
+        </div>
+      </section>
+
+      <section class="dashboard" id="dashboard" hidden>
+        <aside class="sidebar">
+          <a class="wordmark side-wordmark" href="#" aria-label="REA home"><span class="mini-mark" aria-hidden="true"><i></i></span><span>REA</span></a>
+          <div class="workspace-label">YOUR SPACE <span>⌄</span></div>
+          <nav class="main-nav" aria-label="Main navigation">
+            <button class="nav-item active" type="button" data-view="home"><span class="nav-icon">⌂</span> Home <span class="nav-current"></span></button>
+            <button class="nav-item" type="button" data-view="call"><span class="nav-icon">✳</span> Call REA</button>
+            <button class="nav-item" type="button" data-view="chat"><span class="nav-icon">✳</span> Chat with REA</button>
+            <button class="nav-item" type="button" data-view="notes"><span class="nav-icon">▤</span> Thought Catcher</button>
+            <button class="nav-item" type="button" data-view="preferences"><span class="nav-icon">⚙</span> Preferences</button>
+          </nav>
+          <div class="sidebar-divider"></div>
+          <p class="nav-section-title">YOUR TOOLS</p>
+          <button class="nav-item" id="connect-nav" type="button"><span class="nav-icon">⌘</span> Laptop connections <span class="connection-dot"></span></button>
+          <div class="sidebar-spacer"></div>
+          <div class="sidebar-privacy"><span class="privacy-icon">✳</span><div><b>Your space stays yours.</b><span>REA only acts with your say-so.</span></div></div>
+          <button class="profile-button" id="profile-button" type="button"><span class="avatar" id="avatar-initials">A</span><span class="profile-info"><b id="profile-name">Alex Morgan</b><span>Personal space</span></span><span class="profile-menu">···</span></button>
+        </aside>
+
+        <div class="main-area">
+          <header class="topbar">
+            <div class="breadcrumb"><span>YOUR SPACE</span><span class="crumb-slash">/</span><b id="breadcrumb-current">HOME</b></div>
+            <div class="topbar-actions"><span class="today-label" id="today-label"></span><button class="install-button" id="install-app" type="button" hidden>Install REA <span aria-hidden="true">↓</span></button><button class="icon-button" id="help-button" type="button" aria-label="Help">?</button><button class="top-avatar" id="top-avatar" type="button" aria-label="Open profile">A</button></div>
+          </header>
+          <div class="dashboard-content" id="dashboard-content">
+            <section class="welcome-row">
+              <div><p class="eyebrow greeting-eyebrow"><span class="status-dot"></span> YOUR DAY, AT YOUR PACE</p><h1 id="welcome-title">A little space to think, Alex.</h1><p class="welcome-subtitle">Call REA whenever you need a hand.</p></div>
+              <button class="date-pill" id="date-pill" type="button"><span class="calendar-icon">▦</span><span id="full-date"></span><span class="date-chevron">⌄</span></button>
+            </section>
+            <section class="hero-card call-rea-card" id="call-rea-card">
+              <div class="hero-copy call-rea-copy"><div class="hero-tag"><span class="hero-tag-dot"></span> YOUR ASSISTANT, JUST A CALL AWAY</div><h2>Say hello to<br><span>your ideas.</span></h2><p>Need a thought untangled, a fresh perspective, or a hand getting started? Call REA for a warm spoken greeting and a little space to think.</p><button class="hero-button call-rea-button" id="call-rea-button" type="button"><span class="call-button-icon" aria-hidden="true">✳</span> Call REA <span aria-hidden="true">↗</span></button><button class="home-chat-link" id="open-chat" type="button">Open text chat <span aria-hidden="true">→</span></button><span class="hero-footnote"><span>✳</span> The call animation and greeting do not access your microphone.</span><p class="assistant-response" id="assistant-response" aria-live="polite">I'm here when you need me.</p></div>
+              <div class="call-visual" aria-hidden="true"><div class="call-halo halo-outer"></div><div class="call-halo halo-mid"></div><div class="call-halo halo-inner"></div><div class="call-orbit orbit-a"></div><div class="call-orbit orbit-b"></div><div class="call-spark spark-a"></div><div class="call-spark spark-b"></div><div class="call-orb"><span></span></div><span class="call-visual-label">HERE WITH YOU</span><span class="call-visual-caption">A little space<br>to begin.</span></div>
+              <div class="hero-decoration" aria-hidden="true">✳</div>
+            </section>
+            <section class="lower-grid">
+              <article class="panel thought-panel"><div class="panel-heading"><div><p class="eyebrow">GET IT OUT OF YOUR HEAD</p><h3>Thought Catcher</h3></div><span class="panel-icon thought-icon">✳</span></div><p class="panel-description">A thought pops up? Park it here. It can wait while you focus.</p><form class="thought-form" id="thought-form"><label class="sr-only" for="thought-input">Capture a thought</label><input id="thought-input" type="text" placeholder="Type a thought to save for later…" maxlength="120"><button type="submit" aria-label="Save thought">↗</button></form><div class="thought-saved" id="thought-saved" aria-live="polite"></div><div class="panel-foot"><span class="thought-dot"></span> PRIVATE TO YOUR SPACE</div></article>
+              <article class="panel voice-panel"><div class="panel-heading"><div><p class="eyebrow">MAKE IT SOUND LIKE YOU</p><h3>REA's voice</h3></div><span class="panel-icon voice-icon">〰</span></div><p class="panel-description">Pick the voice you feel most comfortable hearing.</p><div class="voice-options" role="group" aria-label="Choose a voice"><button class="voice-option selected" type="button" data-voice="feminine"><span class="voice-avatar voice-f">F</span><span><b>Female</b><small>Warm &amp; clear</small></span><span class="voice-check">✓</span></button><button class="voice-option" type="button" data-voice="masculine"><span class="voice-avatar voice-m">M</span><span><b>Male</b><small>Calm &amp; steady</small></span><span class="voice-check">✓</span></button></div><div class="panel-foot voice-foot"><span id="voice-status">Female voice selected</span><button id="preview-voice" type="button"><span>▶</span> Preview</button></div></article>
+              <article class="panel permission-panel"><div class="permission-card-icon">⌘</div><div class="permission-card-copy"><p class="eyebrow">ONLY WHEN YOU SAY SO</p><h3>Your laptop, your call.</h3><p>Choose if REA can connect to laptop tools. Nothing happens without your permission.</p><button id="manage-permissions" class="inline-link" type="button">Manage permissions <span>↗</span></button></div><span class="permission-shield">◈</span></article>
+            </section>
+            <footer class="dashboard-footer"><span>MADE FOR YOUR MOMENT</span><span>SMALL STEPS COUNT <b>✳</b></span></footer>
+          </div>
+        </div>
+      </section>
+
+      <div class="modal-backdrop" id="permission-modal" hidden>
+        <section class="permission-modal" role="dialog" aria-modal="true" aria-labelledby="permission-title">
+          <button class="modal-close" id="permission-close" type="button" aria-label="Close permissions">×</button>
+          <div class="modal-mark"><span class="mini-mark"><i></i></span></div>
+          <p class="eyebrow modal-eyebrow">A CLEAR YES, EVERY TIME</p>
+          <h2 id="permission-title">Your device.<br><span>Our Service.</span></h2>
+          <p class="modal-description">REA can help with any Device tasks only after you choose what to allow. You can change these choices anytime.</p>
+          <div class="permission-list">
+            <label class="permission-choice"><span class="choice-icon">▣</span><span class="choice-copy"><b>Open apps &amp; links</b><small>Let REA open an app or website when you ask.</small></span><input type="checkbox" name="permission" value="apps"><span class="toggle"><i></i></span></label>
+            <label class="permission-choice"><span class="choice-icon">▤</span><span class="choice-copy"><b>Read selected files</b><small>Only files you specifically choose to share.</small></span><input type="checkbox" name="permission" value="files"><span class="toggle"><i></i></span></label>
+            <label class="permission-choice"><span class="choice-icon">◷</span><span class="choice-copy"><b>Show notifications</b><small>Gentle reminders for your focus breaks.</small></span><input type="checkbox" name="permission" value="notifications"><span class="toggle"><i></i></span></label>
+          </div>
+          <p class="permission-disclaimer">Demo only: this front end does not access your files, apps, or operating system.</p>
+          <button class="primary-button permission-approve" id="save-permissions" type="button">Save my choices <span aria-hidden="true">↗</span></button>
+          <button class="permission-skip" id="skip-permissions" type="button">Not now — I’ll decide later</button>
+        </section>
+      </div>
+
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    </main>
+  </body>
+</html>
